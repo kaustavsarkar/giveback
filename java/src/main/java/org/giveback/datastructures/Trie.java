@@ -186,5 +186,9 @@ public final class Trie {
         public Map<Character, Node> getChildren() {
             return children;
         }
+
+        public boolean isEnd() {
+            return  isEnd;
+        }
     }
 }

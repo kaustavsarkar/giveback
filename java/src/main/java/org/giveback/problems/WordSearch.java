@@ -25,7 +25,6 @@ public final class WordSearch {
     // Taking an {@link Entry} as tuple of (row, col).
     private final Set<Entry<Integer, Integer>> possibleMoves =
             Set.of(new SimpleEntry<>(0, 1),
-                    new SimpleEntry<>(0, 1),
                     new SimpleEntry<>(1, 0),
                     new SimpleEntry<>(0, -1),
                     new SimpleEntry<>(-1, 0));
@@ -47,15 +46,16 @@ public final class WordSearch {
 
                 // If the character is present in the root, start a dfs.
                 if (trie.getRoot().getChildren().containsKey(character)) {
-                    foundWords.add(startFinding(matrix, row, col));
+                    startFinding(matrix, row, col, foundWords);
                 }
             }
         }
         return foundWords;
     }
 
-    private String startFinding(char[][] matrix, int row,
-                                int col) {
+    private void startFinding(char[][] matrix, int row,
+                                int col,
+                                List<String> foundWords) {
         Set<SimpleEntry<Integer, Integer>> visitedCoordinates = new HashSet<>();
         Stack<SimpleEntry<Integer, Integer>> nextMoves = new Stack<>();
         nextMoves.push(new SimpleEntry<>(row, col));
@@ -72,12 +72,18 @@ public final class WordSearch {
             var character = matrix[rowMove][colMove];
             var node = currentNode.getChildren().get(character);
             if (node == null) {
-                return "";
+                continue;
             }
             wordFound += character;
-            currentNode = currentNode.getChildren().get(character);
+            if(node .isEnd()) {
+                foundWords.add(wordFound);
+            }
+            if(node.isEnd() && node.getChildren().isEmpty()) {
+                return;
+            }
+            currentNode = node;
             List<SimpleEntry<Integer, Integer>> validMoves =
-                    getPossibleMoves(row, col, matrix);
+                    getPossibleMoves(rowMove, colMove, matrix);
 
             for (var validMove : validMoves) {
                 if (!visitedCoordinates.contains(validMove)) {
@@ -85,7 +91,6 @@ public final class WordSearch {
                 }
             }
         }
-        return wordFound;
     }
 
     private List<SimpleEntry<Integer, Integer>> getPossibleMoves(int row,
