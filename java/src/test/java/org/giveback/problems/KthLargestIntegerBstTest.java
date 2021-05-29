@@ -27,6 +27,20 @@ public final class KthLargestIntegerBstTest {
     }
 
     @Test
+    public void iter_find_thirdLargest_success() {
+        int[] array = {20, 19, 25, 24, 29, 27, 28, 26};
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        for (Integer number : array) {
+            bst.insert(number);
+        }
+
+        KthLargestIntegerBst claz = new KthLargestIntegerBst();
+        Node<Integer> node = claz.iterativeSolution(bst.getRoot(), 3);
+
+        assertEquals(node.getKey().intValue(), 27);
+    }
+
+    @Test
     public void kLargerThanNodes_returnsNull() {
         int[] array = {20, 19, 25, 24, 29, 27,};
         BinarySearchTree<Integer> bst = new BinarySearchTree<>();
@@ -40,6 +54,18 @@ public final class KthLargestIntegerBstTest {
         assertNull(node);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void iter_kLargerThanNodes_returnsNull() {
+        int[] array = {20, 19, 25, 24, 29, 27,};
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        for (Integer number : array) {
+            bst.insert(number);
+        }
+
+        KthLargestIntegerBst claz = new KthLargestIntegerBst();
+        claz.iterativeSolution(bst.getRoot(), 7);
+    }
+
     @Test
     public void returnsNull_nullTree() {
         BinarySearchTree<Integer> bst = new BinarySearchTree<>();
@@ -48,5 +74,13 @@ public final class KthLargestIntegerBstTest {
         Node<Integer> node = claz.recursiveTraversal(bst.getRoot(), 3);
 
         assertNull(node);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void iter_returnsNull_nullTree() {
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+
+        KthLargestIntegerBst claz = new KthLargestIntegerBst();
+        claz.iterativeSolution(bst.getRoot(), 3);
     }
 }

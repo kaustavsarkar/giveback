@@ -17,6 +17,26 @@ public final class KthLargestIntegerBst {
     private Node<Integer> kthLargestNode;
     private int nodeFromRight;
 
+    public Node<Integer> iterativeSolution(Node<Integer> root, int k) {
+        Stack<Node<Integer>> nodeStack = new Stack<>();
+        Node<Integer> current = root;
+        int kthNumber = 0;
+
+        while (current != null || !nodeStack.isEmpty()) {
+            while (current != null) {
+                nodeStack.push(current);
+                current = current.getRightChild();
+            }
+            current = nodeStack.pop();
+            kthNumber++;
+            if (kthNumber == k) {
+                return current;
+            }
+            current = current.getLeftChild();
+        }
+        throw new IllegalArgumentException("There is no such element");
+    }
+
     public Node<Integer> recursiveTraversal(Node<Integer> root, int k) {
         recurRight(root, k);
         return kthLargestNode;
