@@ -2,6 +2,8 @@ package org.giveback.problems;
 
 import org.giveback.datastructures.tree.BinarySearchTree.Node;
 
+import java.util.Stack;
+
 /**
  * FInd Kth largest integer in a Binary Search Tree.
  * <p>
@@ -24,16 +26,27 @@ public final class KthLargestIntegerBst {
         if (node == null) {
             return;
         }
+
+        // Reach the right end for reaching the largest element in the sub-tree.
         recurRight(node.getRightChild(), k);
+
+        // If the kthLargestNode is identified already, then we should not
+        // move ahead.
         if (kthLargestNode != null) {
             return;
         }
+
+        // Once returned from the right most node, means we have found the
+        // next largest element.
         nodeFromRight++;
+
+        // May reach the kth element here.
         if (nodeFromRight == k) {
             kthLargestNode = node;
             return;
         }
 
+        // Move left.
         recurRight(node.getLeftChild(), k);
 
     }
