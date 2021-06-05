@@ -9,8 +9,14 @@ import java.util.Stack;
  * <p>
  * Input: {@link Node} root, int k
  * <p>
- * Eg: Root - 10 k - 3 Output - 15 10 /      \ 4          20 /            /   \
- * 2           15     40
+ * Eg: Root - 10 k - 3 Output - 15
+ * <code>
+ *                               10
+ *                           /       \
+ *                      4           20
+ *                    /            /      \
+ *                 2           15         40
+ *</code>
  */
 public final class KthLargestIntegerBst {
 
