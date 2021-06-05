@@ -1,5 +1,7 @@
 package org.giveback.datastructures.tree;
 
+import java.util.Objects;
+
 /**
  * Implements Binary Search Tree.
  * <p>
@@ -92,6 +94,30 @@ public final class BinarySearchTree<T extends Comparable<T>> {
 
         public void setKey(T key) {
             this.key = key;
+        }
+
+        @Override
+        public String toString() {
+            return "Node{" +
+                    "key=" + key +
+                    '}';
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
+            Node<?> node = (Node<?>) o;
+            return Objects.equals(getKey(), node.getKey());
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(getKey());
         }
     }
 }
