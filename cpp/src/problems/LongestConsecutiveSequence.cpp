@@ -15,10 +15,6 @@ using namespace std;
 //        Input: array = [0,3,7,2,5,8,4,6,0,1]
 //        Output: 9
 
-// Example 3:
-//        Input: array = [9,63,65,14,10,11,21,22,14,13,15]
-//        Output: 3
-
 class Solution
 {
 public:
