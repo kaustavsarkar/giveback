@@ -24,6 +24,8 @@ class Solution
 public:
     int longestConsecutive(vector<int> &array)
     {
+        if (array.empty())
+            return 0;
         unordered_set<int> record(array.begin(), array.end());
         int longestSequence = 1;
         for (int n : array)
