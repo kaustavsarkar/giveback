@@ -82,7 +82,7 @@ public class AdjMatrixGraph {
             int nextVertex = getUnvisitedVertex(vertex, vertices);
             if(nextVertex == -1) {
                 stack.pop();
-                continue;;
+                continue;
             }
 
             vertices[nextVertex].isVisited = true;
