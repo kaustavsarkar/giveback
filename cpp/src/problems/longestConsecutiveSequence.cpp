@@ -15,7 +15,7 @@ using namespace std;
 //        Input: array = [0,3,7,2,5,8,4,6,0,1]
 //        Output: 9
 
-class Solution
+class LongestConsecutive
 {
 public:
     int longestConsecutive(vector<int> &array)
@@ -39,3 +39,5 @@ public:
         return longestSequence;
     }
 };
+
+/* unit test is in ../src/test/longestConsecutiveSequenceTest */
