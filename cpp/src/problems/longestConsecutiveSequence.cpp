@@ -23,18 +23,15 @@ public:
         if (array.empty())
             return 0;
         unordered_set<int> record(array.begin(), array.end());
-        int longestSequence = 1;
-        for (int n : array)
+        int longestSequence = 0;
+        for (auto &num : record)
         {
-            if (record.find(n) == record.end())
+            if (record.count(num - 1))
                 continue;
-            record.erase(n);
-            int prev = n - 1, next = n + 1;
-            while (record.find(prev) != record.end())
-                record.erase(prev--);
-            while (record.find(next) != record.end())
-                record.erase(next++);
-            longestSequence = max(longestSequence, next - prev - 1);
+            int currentSequence = 1;
+            while (record.count(num + currentSequence))
+                currentSequence++;
+            longestSequence = max(longestSequence, currentSequence);
         }
         return longestSequence;
     }
