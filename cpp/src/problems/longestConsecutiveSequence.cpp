@@ -37,4 +37,6 @@ public:
     }
 };
 
+// Time & Space Complexity : O(N)
+
 /* unit test is in ../src/test/longestConsecutiveSequenceTest */
