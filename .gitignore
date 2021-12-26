@@ -60,15 +60,15 @@ cwallet.sso.lck
 
 # Filter BIP Folders
 # ----------------------------
-**/bip/Admin/Audit  
-**/bip/Admin/Configuration  
-**/bip/Admin/DataSource  
-**/bip/Admin/Delivery  
-**/bip/Admin/Log  
-**/bip/Admin/Map  
-**/bip/Admin/Map_backup  
-**/bip/Admin/Plugins  
-**/bip/Admin/Scheduler  
+**/bip/Admin/Audit
+**/bip/Admin/Configuration
+**/bip/Admin/DataSource
+**/bip/Admin/Delivery
+**/bip/Admin/Log
+**/bip/Admin/Map
+**/bip/Admin/Map_backup
+**/bip/Admin/Plugins
+**/bip/Admin/Scheduler
 **/bip/Admin/Translation
 **/bip/DemoFiles
 **/bip/meta
@@ -89,4 +89,4 @@ cwallet.sso.lck
 nbactions*.xml
 *.iml
 RemoteSystemsTempFiles/*
-
+.vscode
